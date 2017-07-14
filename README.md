@@ -1,2 +1,2 @@
 # granscan
-Linux multi-diagnostics tool
+A simplified way to run various Linux diagnostic tools

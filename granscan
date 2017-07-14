@@ -1,0 +1,88 @@
+#!/bin/bash
+
+function HELP {
+   cat << EOF
+Usage: granscan [OPTION] [COMMAND]
+
+A simplified way to run various Linux diagnostic tools
+
+Options:
+  -h        Print usage
+  -c        Run CPU diagnostic tools
+  -m        Run memory diagnostic tools
+  -n        Run network diagnostic tools
+  -s        Run storage diagnostic tools
+
+Commands:
+  help      Print usage
+  check     Check what tools can be run and what missing tools can be installed
+  info      Display more information about a section or tool
+  cpu       Run CPU diagnostic tools
+  memory    Run memory diagnostic tools
+  network   Run network diagnostic tools
+  storage   Run storage diagnostic tools
+
+EOF
+  exit 0;
+}
+
+function CPU() {
+  echo "CPU"
+}
+function MEMORY() {
+  echo "MEMORY"
+}
+function NETWORK() {
+  echo "NETWORK"
+}
+function STORAGE() {
+  echo "STORAGE"
+}
+
+while getopts ":hcmns" opt; do
+  case $opt in
+    h)
+      if [[ $# == "1" ]]; then
+        HELP;
+      elif [[ $2 == "network" ]]; then
+        echo "NETWORK HELP"
+      elif [[ $2 == "cpu" ]]; then
+        echo "CPU HELP"
+      elif [[ $2 == "memory" ]]; then
+        echo "MEMORY HELP"
+      elif [[ $2 == "storage" ]]; then
+        echo "STORAGE HELP"
+      fi
+      ;;
+    c)
+      CPU
+      ;;
+    m)
+      MEMORY
+      ;;
+    n)
+      NETWORK
+      ;;
+    s)
+      STORAGE
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG"
+      echo "Check usage with: granscan -h" >&2
+      ;;
+  esac
+done
+
+if [[ $# == "0" ]]; then
+  HELP;
+elif [[ $1 == "help" ]]; then
+  HELP;
+elif [[ $1 == "cpu" ]]; then
+  CPU;
+elif [[ $1 == "memory" ]]; then
+  MEMORY;
+elif [[ $1 == "network" ]]; then
+  NETWORK;
+elif [[ $1 == "storage" ]]; then
+  STORAGE;
+fi
