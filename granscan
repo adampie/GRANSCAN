@@ -8,10 +8,7 @@ A simplified way to run various Linux diagnostic tools
 
 Options:
   -h        Print usage
-  -c        Run CPU diagnostic tools
-  -m        Run memory diagnostic tools
-  -n        Run network diagnostic tools
-  -s        Run storage diagnostic tools
+  -a        Run all diagnostic tools
 
 Commands:
   help      Print usage
@@ -21,9 +18,27 @@ Commands:
   memory    Run memory diagnostic tools
   network   Run network diagnostic tools
   storage   Run storage diagnostic tools
+  all       Run all diagnostic tools
 
 EOF
   exit 0;
+}
+
+function INFO() {
+  echo "ALL INFO"
+}
+
+function CPUINFO() {
+  echo "CPU INFO"
+}
+function MEMORYINFO() {
+  echo "MEMORY INFO"
+}
+function NETWORKINFO() {
+  echo "NETWORK INFO"
+}
+function STORAGEINFO() {
+  echo "STORAGE INFO"
 }
 
 function CPU() {
@@ -38,33 +53,30 @@ function NETWORK() {
 function STORAGE() {
   echo "STORAGE"
 }
+function ALL() {
+  CPU;
+  MEMORY;
+  NETWORK;
+  STORAGE;
+}
 
-while getopts ":hcmns" opt; do
+while getopts ":hcmnsa" opt; do
   case $opt in
     h)
       if [[ $# == "1" ]]; then
         HELP;
-      elif [[ $2 == "network" ]]; then
-        echo "NETWORK HELP"
       elif [[ $2 == "cpu" ]]; then
-        echo "CPU HELP"
+        CPUINFO
       elif [[ $2 == "memory" ]]; then
-        echo "MEMORY HELP"
+        MEMORYINFO
+      elif [[ $2 == "network" ]]; then
+        NETWORKINFO
       elif [[ $2 == "storage" ]]; then
-        echo "STORAGE HELP"
+        STORAGE
       fi
       ;;
-    c)
-      CPU
-      ;;
-    m)
-      MEMORY
-      ;;
-    n)
-      NETWORK
-      ;;
-    s)
-      STORAGE
+    a)
+      ALL;
       ;;
     \?)
       echo "Invalid option: -$OPTARG"
@@ -85,4 +97,8 @@ elif [[ $1 == "network" ]]; then
   NETWORK;
 elif [[ $1 == "storage" ]]; then
   STORAGE;
+elif [[ $1 == "all" ]]; then
+  ALL;
+elif [[ $1 == "info" ]]; then
+  INFO;
 fi
