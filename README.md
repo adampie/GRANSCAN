@@ -21,7 +21,7 @@ Commands:
   info      Get various information about the current system
 ```
 
-# How to use
+# Usage
 ```
 git clone https://github.com/adampie/granscan
 cd granscan && chmod +x granscan
