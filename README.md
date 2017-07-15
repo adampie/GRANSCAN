@@ -20,3 +20,16 @@ Commands:
   all       Run cpu, memory, network and storage diagnostic tools
   info      Get various information about the current system
 ```
+
+## How to use
+```
+git clone https://github.com/adampie/granscan
+cd granscan && chmod +x granscan
+./granscan
+```
+or
+```
+sudo wget https://raw.githubusercontent.com/adampie/granscan/master/granscan /usr/bin
+sudo chmod +x /usr/bin/granscan
+granscan
+```
