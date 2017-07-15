@@ -13,45 +13,76 @@ Options:
 Commands:
   help      Print usage
   check     Check what tools can be run and what missing tools can be installed
-  info      Display more information about a section or tool
   cpu       Run CPU diagnostic tools
   memory    Run memory diagnostic tools
   network   Run network diagnostic tools
   storage   Run storage diagnostic tools
-  all       Run all diagnostic tools
+  all       Run cpu, memory, network and storage diagnostic tools
+  info      Get various information about the current system
 
 EOF
   exit 0;
 }
 
-function INFO() {
-  echo "ALL INFO"
+function CPUHELP() {
+  echo "CPU HELP"
 }
-
-function CPUINFO() {
-  echo "CPU INFO"
+function MEMORYHELP() {
+  echo "MEMORY HELP"
 }
-function MEMORYINFO() {
-  echo "MEMORY INFO"
+function NETWORKHELP() {
+  echo "NETWORK HELP"
 }
-function NETWORKINFO() {
-  echo "NETWORK INFO"
+function STORAGEHELP() {
+  echo "STORAGE HELP"
 }
-function STORAGEINFO() {
-  echo "STORAGE INFO"
+function INFOHELP() {
+  echo "INFO HELP"
 }
 
 function CPU() {
-  echo "CPU"
+  echo "#######################################################################"
+  echo "#                              CPU                                    #"
+  echo "#######################################################################"
+  echo ""
 }
 function MEMORY() {
-  echo "MEMORY"
+  echo "#######################################################################"
+  echo "#                             MEMORY                                  #"
+  echo "#######################################################################"
+  echo ""
 }
 function NETWORK() {
-  echo "NETWORK"
+  echo "#######################################################################"
+  echo "#                             NETWORK                                 #"
+  echo "#######################################################################"
+  echo ""
+  if [[ -x "$(command -v netstat)" ]]; then
+    echo "############################# netstat #################################"
+    netstat;
+    echo "";
+  fi
+  if [[ -x "$(command -v ss)" ]]; then
+    echo "############################### ss ####################################"
+    ss;
+    echo "";
+  fi
 }
 function STORAGE() {
-  echo "STORAGE"
+  echo "#######################################################################"
+  echo "#                             STORAGE                                 #"
+  echo "#######################################################################"
+  echo ""
+  if [[ -x "$(command -v df)" ]]; then
+    echo "############################### df ####################################"
+    df -h;
+    echo "";
+  fi
+  if [[ -x "$(command -v lsblk)" ]]; then
+    echo "############################## lsblk ###################################"
+    lsblk;
+    echo "";
+  fi
 }
 function ALL() {
   CPU;
@@ -59,20 +90,49 @@ function ALL() {
   NETWORK;
   STORAGE;
 }
+function INFO() {
+  echo "#######################################################################"
+  echo "#                              INFO                                   #"
+  echo "#######################################################################"
+  echo ""
+  if [[ -x "$(command -v lscpu)" ]]; then
+    echo "############################## lscpu ##################################"
+    lscpu;
+    echo "";
+  fi
+  if [[ -x "$(command -v lshw)" ]]; then
+    echo "############################## lshw ###################################"
+    lshw -short;
+    echo "";
+  fi
+  if [[ -x "$(command -v lsscsi)" ]]; then
+    echo "############################# lsscsi ##################################"
+    lsscsi;
+    echo "";
+  fi
+  if [[ -x "$(command -v lsusb)" ]]; then
+    echo "############################# lsusb ###################################"
+    lsusb;
+    echo "";
+  fi
+}
 
-while getopts ":hcmnsa" opt; do
+while getopts ":ha" opt; do
   case $opt in
     h)
       if [[ $# == "1" ]]; then
         HELP;
       elif [[ $2 == "cpu" ]]; then
-        CPUINFO
+        CPUHELP
       elif [[ $2 == "memory" ]]; then
-        MEMORYINFO
+        MEMORYHELP
       elif [[ $2 == "network" ]]; then
-        NETWORKINFO
+        NETWORKHELP
       elif [[ $2 == "storage" ]]; then
-        STORAGE
+        STORAGEHELP
+      fi
+    elif [[ $2 == "info" ]]; then
+        INFOHELP
       fi
       ;;
     a)
@@ -101,4 +161,6 @@ elif [[ $1 == "all" ]]; then
   ALL;
 elif [[ $1 == "info" ]]; then
   INFO;
+elif [[ $1 == "stats" ]]; then
+  STATS;
 fi
