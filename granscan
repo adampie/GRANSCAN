@@ -17,8 +17,8 @@ Commands:
   memory    Run memory diagnostic tools
   network   Run network diagnostic tools
   storage   Run storage diagnostic tools
-  all       Run cpu, memory, network and storage diagnostic tools
   info      Get various information about the current system
+  all       Run cpu, memory, network and storage diagnostic tools
 
 EOF
   exit 0;
@@ -83,6 +83,15 @@ Tools:
   lshw      List hardware
   lsscsi    List SCSI devices (or hosts) and their attributes
   lsusb     List USB devices
+
+EOF
+  exit 0;
+}
+function CHECKHELP() {
+  cat << EOF
+Usage: granscan check
+
+This will check if the tools within this script are installed or not.
 
 EOF
   exit 0;
@@ -337,6 +346,8 @@ while getopts ":ha" opt; do
         STORAGEHELP
       elif [[ $2 == "info" ]]; then
         INFOHELP
+      elif [[ $2 == "check" ]]; then
+        CHECKHELP
       fi
       ;;
     a)
