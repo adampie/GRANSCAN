@@ -17,8 +17,8 @@ Commands:
   memory    Run memory diagnostic tools
   network   Run network diagnostic tools
   storage   Run storage diagnostic tools
-  all       Run cpu, memory, network and storage diagnostic tools
   info      Get various information about the current system
+  all       Run cpu, memory, network and storage diagnostic tools
 ```
 
 # Usage
