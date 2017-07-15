@@ -17,8 +17,8 @@ Commands:
   memory    Run memory diagnostic tools
   network   Run network diagnostic tools
   storage   Run storage diagnostic tools
-  all       Run cpu, memory, network and storage diagnostic tools
   info      Get various information about the current system
+  all       Run cpu, memory, network and storage diagnostic tools
 ```
 
 # Usage
@@ -29,8 +29,8 @@ cd granscan && chmod +x granscan
 ```
 or
 ```
-sudo wget https://raw.githubusercontent.com/adampie/granscan/master/granscan /usr/bin
-sudo chmod +x /usr/bin/granscan
+wget https://raw.githubusercontent.com/adampie/granscan/master/granscan
+chmod +x granscan && sudo mv granscan /usr/bin
 granscan
 ```
 
