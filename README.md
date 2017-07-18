@@ -24,13 +24,13 @@ Commands:
 # Usage
 ```
 git clone https://github.com/adampie/granscan
-cd granscan && chmod +x granscan
-./granscan
+cd granscan && chmod +x granscan.sh
+./granscan.sh
 ```
 or
 ```
-wget https://raw.githubusercontent.com/adampie/granscan/master/granscan
-chmod +x granscan && sudo mv granscan /usr/bin
+wget https://raw.githubusercontent.com/adampie/granscan/master/granscan.sh
+chmod +x granscan.sh && sudo mv granscan.sh /usr/bin/granscan
 granscan
 ```
 
