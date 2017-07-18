@@ -143,3 +143,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/go,macos,linux,windows,jetbrains
+/.idea
