@@ -7,5 +7,9 @@ import (
 )
 
 func main() {
-  fmt.Printf("HELLO123!")
+    //fmt.Printf(gwlt.InternalIP())
+    //fmt.Printf(gwlt.ExternalIP())
+
+	fmt.Printf(gwlt.Uptime())
+	fmt.Printf(gwlt.UsersLoggedin())
 }
