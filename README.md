@@ -1,6 +1,8 @@
 # granscan
 A simplified way to run various Linux diagnostic tools
 
+### N.B - I am re-writing this in Golang so the readme is not up to date at the moment.
+
 ```
 Usage: granscan [OPTION] [COMMAND]
 
