@@ -7,9 +7,19 @@ import (
 )
 
 func main() {
-    //fmt.Printf(gwlt.InternalIP())
-    //fmt.Printf(gwlt.ExternalIP())
+	// CPU TEST
 
+	// MEMORY TEST
+
+	// NETWORK TEST
+
+	// STORAGE TEST
+
+	// INFO TEST
 	fmt.Printf(gwlt.Uptime()+"\n")
 	fmt.Printf(gwlt.UsersLoggedin()+"\n")
+	fmt.Printf(gwlt.ListCPU()+"\n")
+	fmt.Printf(gwlt.ListHardware()+"\n")
+	fmt.Printf(gwlt.ListSCSI()+"\n")
+	fmt.Printf(gwlt.ListUSB()+"\n")
 }
