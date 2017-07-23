@@ -10,6 +10,6 @@ func main() {
     //fmt.Printf(gwlt.InternalIP())
     //fmt.Printf(gwlt.ExternalIP())
 
-	fmt.Printf(gwlt.Uptime())
-	fmt.Printf(gwlt.UsersLoggedin())
+	fmt.Printf(gwlt.Uptime()+"\n")
+	fmt.Printf(gwlt.UsersLoggedin()+"\n")
 }
